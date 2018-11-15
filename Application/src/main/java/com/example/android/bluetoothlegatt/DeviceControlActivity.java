@@ -17,6 +17,7 @@
 package com.example.android.bluetoothlegatt;
 
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
 import android.content.BroadcastReceiver;
@@ -26,12 +27,15 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.pm.ApplicationInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
@@ -74,6 +78,10 @@ public class DeviceControlActivity extends Activity {
 
     private final String LIST_NAME = "NAME";
     private final String LIST_UUID = "UUID";
+
+    // SMS messaging variables
+    private String messageContent = "";
+    private String phoneNumber;
 
     // Code to manage Service lifecycle.
     private final ServiceConnection mServiceConnection = new ServiceConnection() {
@@ -182,6 +190,8 @@ public class DeviceControlActivity extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
         Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
         bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
+       // SendSMSMessage();
+        smsSendMessage(phoneNumber, messageContent);
     }
 
     @Override
@@ -342,6 +352,58 @@ public class DeviceControlActivity extends Activity {
         });
 
         queue.add(request);
+    }
+
+ //Normally takes view in as parameter
+    public void SendSMSMessage() {
+
+        //TextView textView = (TextView) findViewById(R.id.number_to_call);
+        // Use format with "smsto:" and phone number to create smsNumber.
+        String smsNumber = String.format("smsto: %s", "004407539106585");
+                //textView.getText().toString());
+        // Find the sms_message view.
+        //EditText smsEditText
+                //(EditText) findViewById(R.id.sms_message);
+        // Get the text of the sms message.
+        String sms = "Test Message";
+                //= smsEditText.getText().toString();
+        // Create the intent.
+        Intent smsIntent = new Intent(Intent.ACTION_SENDTO);
+        // Set the data for the intent as the phone number.
+        smsIntent.setData(Uri.parse(smsNumber));
+        // Add the message (sms) with the key ("sms_body").
+        smsIntent.putExtra("sms_body", sms);
+        // If package resolves (target app installed), send intent.
+        if (smsIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(smsIntent);
+        } else {
+            Log.d(TAG, "Can't resolve app for ACTION_SENDTO Intent");
+        }
+    }
+
+    public void smsSendMessage(String phoneNumber, String messageContent) {
+        try {
+            //EditText editText = (EditText) findViewById(R.id.editText_main);
+            // Set the destination phone number to the string in editText.
+            String destinationAddress = "07956765611";
+            // Find the sms_message view.
+            //EditText smsEditText = (EditText) findViewById(R.id.sms_message);
+            // Get the text of the SMS message.
+            String smsMessage = "Hi Kobi";
+            // Set the service center address if needed, otherwise null.
+            String scAddress = null;
+            // Set pending intents to broadcast
+            // when message sent and when delivered, or set to null.
+            PendingIntent sentIntent = null, deliveryIntent = null;
+            // Use SmsManager.
+            SmsManager smsManager = SmsManager.getDefault();
+
+            smsManager.sendTextMessage
+                    (destinationAddress, scAddress, smsMessage,
+                            sentIntent, deliveryIntent);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
 
