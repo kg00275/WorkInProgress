@@ -37,6 +37,7 @@ import android.support.v13.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.telephony.SmsManager;
 import android.util.Log;
+import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -100,9 +101,12 @@ public class DeviceControlActivity extends Activity {
 
     // Location variables
     private FusedLocationProviderClient mFusedLocationClient;
+    private String lastLocation;
 
     //Online database variables
     private String currentUserUUID;
+
+
 
     // Code to manage Service lifecycle.
     private final ServiceConnection mServiceConnection = new ServiceConnection() {
@@ -216,8 +220,11 @@ public class DeviceControlActivity extends Activity {
 
         // Location functionality
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-        getLocation();
-        WriteUserToDatabase("userNameTest", "nameTest", "passwordTest", "07539106585");
+        lastLocation = new String("");
+        setLastLocation();
+        String a = lastLocation;
+        int b = 8;
+        //WriteUserToDatabase("userNameTest", "nameTest", "passwordTest", "07539106585");
         //currentUserUUID = GetUserFromDatabase("userNameTest", "passwordTest");
         //WriteFallToDatabase("99", "3", "4");
     }
@@ -583,7 +590,7 @@ public class DeviceControlActivity extends Activity {
     /**
      * Function to assign the last known location of the device to the location variable within the class
      */
-    private void getLocation() {
+    private void setLastLocation() {
 
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
@@ -595,15 +602,14 @@ public class DeviceControlActivity extends Activity {
                         public void onSuccess(Location location) {
                             // Got last known location. In some rare situations this can be null.
                             if (location != null) {
-
-
+                                lastLocation = Double.toString(location.getLatitude()) + "," + Double.toString(location.getLongitude()) ;
+                                String b = lastLocation;
                                 // Get into right format
                                 // Logic to handle location object
                             }
                         }
                     });
         }
-
     }
 
 }
