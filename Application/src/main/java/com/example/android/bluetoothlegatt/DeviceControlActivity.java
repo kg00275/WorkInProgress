@@ -101,6 +101,9 @@ public class DeviceControlActivity extends Activity {
     // Location variables
     private FusedLocationProviderClient mFusedLocationClient;
 
+    //Online database variables
+    private String currentUserUUID;
+
     // Code to manage Service lifecycle.
     private final ServiceConnection mServiceConnection = new ServiceConnection() {
 
@@ -214,8 +217,9 @@ public class DeviceControlActivity extends Activity {
         // Location functionality
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         getLocation();
-        WriteToDatabase();
-        int a = 0;
+        WriteUserToDatabase("userNameTest", "nameTest", "passwordTest", "07539106585");
+        //currentUserUUID = GetUserFromDatabase("userNameTest", "passwordTest");
+        //WriteFallToDatabase("99", "3", "4");
     }
 
     @Override
@@ -373,10 +377,13 @@ public class DeviceControlActivity extends Activity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JSONObject jsonBodyObj = new JSONObject();
+
+        // Specify URL to send the request to
         String url = "http://81.109.61.10/manage";
         try{
             jsonBodyObj.put("action", "insert_fall");
             jsonBodyObj.put("uuid", uuid);
+            jsonBodyObj.put("timestamp", getTimestamp());
             jsonBodyObj.put("data", jsonData);
         }catch (JSONException e){
             e.printStackTrace();
@@ -390,7 +397,6 @@ public class DeviceControlActivity extends Activity {
 
             @Override
                 public void onResponse(JSONObject response) {
-                Log.i("Response",String.valueOf(response));
             }
 
         }, new Response.ErrorListener() {
@@ -415,7 +421,6 @@ public class DeviceControlActivity extends Activity {
 
         // Add request to the queue
         requestQueue.add(jsonObjectRequest);
-
     }
 
     /**
@@ -428,9 +433,9 @@ public class DeviceControlActivity extends Activity {
     private void WriteUserToDatabase(String userName, String name, String password, String emergency_no) {
 
         // Create the JSON Object and the request queue to add it to
-        JSONObject jsonData = new JSONObject();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JSONObject jsonBodyObj = new JSONObject();
+        // Specify URL to send the request to
         String url = "http://81.109.61.10/manage";
         try{
             jsonBodyObj.put("action", "create_user");
@@ -450,7 +455,7 @@ public class DeviceControlActivity extends Activity {
 
             @Override
             public void onResponse(JSONObject response) {
-                Log.i("Response",String.valueOf(response));
+                    currentUserUUID = response.optString("uuid");
             }
 
         }, new Response.ErrorListener() {
@@ -466,7 +471,6 @@ public class DeviceControlActivity extends Activity {
                 return headers;
             }
 
-
             @Override    public byte[] getBody() {
                 byte[] bytes = requestBody.getBytes();
                 return bytes;
@@ -478,16 +482,18 @@ public class DeviceControlActivity extends Activity {
     }
 
     /**
-     * Function to get a user from the database
+     * * Function to get a user from the database
      * @param userName the username of the user
      * @param password the password of the user
+     * @return a string containing the uuid of the user
      */
-    private void GetUserFromDatabase(String userName, String password) {
+        private String GetUserFromDatabase(String userName, String password) {
 
+            final String[] uuidString = {""};
         // Create the JSON Object and the request queue to add it to
-        JSONObject jsonData = new JSONObject();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JSONObject jsonBodyObj = new JSONObject();
+        // Specify URL to send the request to
         String url = "http://81.109.61.10/manage";
         try{
             jsonBodyObj.put("action", "get_user");
@@ -505,6 +511,7 @@ public class DeviceControlActivity extends Activity {
 
             @Override
             public void onResponse(JSONObject response) {
+                    uuidString[0] = response.optString("uuid");
                 Log.i("Response",String.valueOf(response));
             }
 
@@ -530,6 +537,7 @@ public class DeviceControlActivity extends Activity {
 
         // Add request to the queue
         requestQueue.add(jsonObjectRequest);
+        return uuidString[0];
     }
 
     /**
