@@ -16,6 +16,7 @@
 
 package com.example.android.bluetoothlegatt;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.bluetooth.BluetoothGattCharacteristic;
@@ -27,9 +28,13 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.support.v13.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.Menu;
@@ -40,18 +45,28 @@ import android.widget.ExpandableListView;
 import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * For a given BLE device, this Activity provides the user interface to connect, display data,
@@ -82,6 +97,9 @@ public class DeviceControlActivity extends Activity {
     // SMS messaging variables
     private String messageContent = "";
     private String phoneNumber;
+
+    // Location variables
+    private FusedLocationProviderClient mFusedLocationClient;
 
     // Code to manage Service lifecycle.
     private final ServiceConnection mServiceConnection = new ServiceConnection() {
@@ -190,8 +208,14 @@ public class DeviceControlActivity extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
         Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
         bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
-       // SendSMSMessage();
+        // SendSMSMessage();
         smsSendMessage(phoneNumber, messageContent);
+
+        // Location functionality
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        getLocation();
+        WriteToDatabase();
+        int a = 0;
     }
 
     @Override
@@ -329,58 +353,191 @@ public class DeviceControlActivity extends Activity {
 
     //Eva code
 
-    private void WriteToDatabase(){
+    /**
+     * Function to log a fall event in the online database
+     * @param uuid the unique identifier of the event
+     * @param latitude the latitude at which the fall occurs
+     * @param longitude the longitude at which the fall occurs
+     */
+    private void WriteFallToDatabase(String uuid, String latitude, String longitude) {
 
-        RequestQueue queue = Singleton.getInstance(this).getRequestQueue();
-        String url = "http://www.pcworld.com/index.rss";
-        StringRequest request = new StringRequest(url, new Response.Listener<String>() {
+        // Create the JSON Object and the request queue to add it to
+        JSONObject jsonData = new JSONObject();
+        try{
+            jsonData.put("hi", latitude);
+            jsonData.put("bye", longitude);
+
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JSONObject jsonBodyObj = new JSONObject();
+        String url = "http://81.109.61.10/manage";
+        try{
+            jsonBodyObj.put("action", "insert_fall");
+            jsonBodyObj.put("uuid", uuid);
+            jsonBodyObj.put("data", jsonData);
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+
+        final String requestBody = jsonBodyObj.toString();
+
+        // Send POST request to the script
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
+                url, null, new Response.Listener<JSONObject>(){
 
             @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject jsonResponse = new JSONObject(response);
-
-                } catch(JSONException exception){
-                    exception.printStackTrace();
-                }
+                public void onResponse(JSONObject response) {
+                Log.i("Response",String.valueOf(response));
             }
+
+        }, new Response.ErrorListener() {
+            @Override
+                public void onErrorResponse(VolleyError error) {
+                VolleyLog.e("Error: ", error.getMessage());
+            }
+        }){
+            @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json");
+                return headers;
+            }
+
+
+            @Override    public byte[] getBody() {
+                byte[] bytes = requestBody.getBytes();
+                return bytes;
+            }
+        };
+
+        // Add request to the queue
+        requestQueue.add(jsonObjectRequest);
+
+    }
+
+    /**
+     * Function to register a user in the database
+     * @param userName the username of the user
+     * @param name the name of the user
+     * @param password the password of the user
+     * @param emergency_no the emergency number of the user
+     */
+    private void WriteUserToDatabase(String userName, String name, String password, String emergency_no) {
+
+        // Create the JSON Object and the request queue to add it to
+        JSONObject jsonData = new JSONObject();
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JSONObject jsonBodyObj = new JSONObject();
+        String url = "http://81.109.61.10/manage";
+        try{
+            jsonBodyObj.put("action", "create_user");
+            jsonBodyObj.put("username", userName);
+            jsonBodyObj.put("name", name);
+            jsonBodyObj.put("password", password);
+            jsonBodyObj.put("emergency_no", emergency_no);
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+
+        final String requestBody = jsonBodyObj.toString();
+
+        // Send POST request to the script
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
+                url, null, new Response.Listener<JSONObject>(){
+
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.i("Response",String.valueOf(response));
+            }
+
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                //something happened, treat the error.
+                VolleyLog.e("Error: ", error.getMessage());
             }
-        });
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json");
+                return headers;
+            }
 
-        queue.add(request);
+
+            @Override    public byte[] getBody() {
+                byte[] bytes = requestBody.getBytes();
+                return bytes;
+            }
+        };
+
+        // Add request to the queue
+        requestQueue.add(jsonObjectRequest);
     }
 
- //Normally takes view in as parameter
-    public void SendSMSMessage() {
+    /**
+     * Function to get a user from the database
+     * @param userName the username of the user
+     * @param password the password of the user
+     */
+    private void GetUserFromDatabase(String userName, String password) {
 
-        //TextView textView = (TextView) findViewById(R.id.number_to_call);
-        // Use format with "smsto:" and phone number to create smsNumber.
-        String smsNumber = String.format("smsto: %s", "004407539106585");
-                //textView.getText().toString());
-        // Find the sms_message view.
-        //EditText smsEditText
-                //(EditText) findViewById(R.id.sms_message);
-        // Get the text of the sms message.
-        String sms = "Test Message";
-                //= smsEditText.getText().toString();
-        // Create the intent.
-        Intent smsIntent = new Intent(Intent.ACTION_SENDTO);
-        // Set the data for the intent as the phone number.
-        smsIntent.setData(Uri.parse(smsNumber));
-        // Add the message (sms) with the key ("sms_body").
-        smsIntent.putExtra("sms_body", sms);
-        // If package resolves (target app installed), send intent.
-        if (smsIntent.resolveActivity(getPackageManager()) != null) {
-            startActivity(smsIntent);
-        } else {
-            Log.d(TAG, "Can't resolve app for ACTION_SENDTO Intent");
+        // Create the JSON Object and the request queue to add it to
+        JSONObject jsonData = new JSONObject();
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JSONObject jsonBodyObj = new JSONObject();
+        String url = "http://81.109.61.10/manage";
+        try{
+            jsonBodyObj.put("action", "get_user");
+            jsonBodyObj.put("username", userName);
+            jsonBodyObj.put("password", password);
+        }catch (JSONException e){
+            e.printStackTrace();
         }
+
+        final String requestBody = jsonBodyObj.toString();
+
+        // Send POST request to the script
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
+                url, null, new Response.Listener<JSONObject>(){
+
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.i("Response",String.valueOf(response));
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.e("Error: ", error.getMessage());
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json");
+                return headers;
+            }
+
+
+            @Override    public byte[] getBody() {
+                byte[] bytes = requestBody.getBytes();
+                return bytes;
+            }
+        };
+
+        // Add request to the queue
+        requestQueue.add(jsonObjectRequest);
     }
 
+    /**
+     * Function to send an SMS message with the provided content to the specified number
+     *
+     * @param phoneNumber the number to send the SMS message to
+     * @param messageContent the content of the message
+     */
     public void smsSendMessage(String phoneNumber, String messageContent) {
         try {
             //EditText editText = (EditText) findViewById(R.id.editText_main);
@@ -401,11 +558,44 @@ public class DeviceControlActivity extends Activity {
             smsManager.sendTextMessage
                     (destinationAddress, scAddress, smsMessage,
                             sentIntent, deliveryIntent);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Function to get the current date and time
+     *
+     * @return a string containing the current date and time
+     */
+    private String getTimestamp() {
+        return Calendar.getInstance().getTime().toString();
+    }
 
+    /**
+     * Function to assign the last known location of the device to the location variable within the class
+     */
+    private void getLocation() {
+
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            // Permission has already been granted
+            mFusedLocationClient.getLastLocation()
+                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            // Got last known location. In some rare situations this can be null.
+                            if (location != null) {
+
+
+                                // Get into right format
+                                // Logic to handle location object
+                            }
+                        }
+                    });
+        }
+
+    }
 
 }

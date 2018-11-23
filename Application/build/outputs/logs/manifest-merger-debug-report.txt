@@ -4,16 +4,21 @@ ADDED from C:\Users\Eva Esteban\AndroidStudioEPS\Application\src\main\AndroidMan
 INJECTED from C:\Users\Eva Esteban\AndroidStudioEPS\Application\src\main\AndroidManifest.xml:20:1-55:12
 INJECTED from C:\Users\Eva Esteban\AndroidStudioEPS\Application\src\main\AndroidManifest.xml:20:1-55:12
 MERGED from [com.android.support:support-v13:27.0.2] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\support-v13-27.0.2.aar\f38f06d849713b25745b91cf7c727ad1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-location:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-location-15.0.1.aar\6ea3112277d4bf6a85952b92afb09ea4\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-base:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\2d8cb3a6cdceadf346d8f0ae8ef049ae\AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-places-placereport:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-places-placereport-15.0.1.aar\6fd46bc98cf34ec313d908b98f92dcd3\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-tasks:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-tasks-15.0.1.aar\21afe23313db3f2e41621c38ef1e3a28\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-basement-15.0.1.aar\e14604cbd5ce95169f948388de92b8c1\AndroidManifest.xml:17:1-28:12
 MERGED from [com.android.support:support-v4:27.0.2] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\support-v4-27.0.2.aar\1cd2ebe37bf1cc91bf2556b9a15e04a6\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:cardview-v7:27.0.2] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.0.2.aar\a6be7dda1d0582ca6d2c172f3c426d27\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:appcompat-v7:27.0.2] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.0.2.aar\49d4e480e69f537968db6bd729394a4d\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.volley:volley:1.1.0] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\volley-1.1.0.aar\fbc1b81bf11b440ca42916ed13a15089\AndroidManifest.xml:2:1-11:12
-MERGED from [com.android.support:support-media-compat:27.0.2] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.0.2.aar\bfe535873bf74b7a3f81f873f7c06fde\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-fragment:27.0.2] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\support-fragment-27.0.2.aar\e41b75e580987a641ea5cb49bf96a44a\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-core-utils:27.0.2] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.0.2.aar\eea431c6ee172302b0a0be50350e7bfa\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:animated-vector-drawable:27.0.2] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.0.2.aar\5553fe29432a7f600488faa45f14402a\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-core-ui:27.0.2] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.0.2.aar\3d420428666b24e07af2d550acf1169a\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-vector-drawable:27.0.2] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.0.2.aar\d718499b85556eeb6bc87c84ab1a2a70\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:27.0.2] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.0.2.aar\bfe535873bf74b7a3f81f873f7c06fde\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-compat:27.0.2] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\support-compat-27.0.2.aar\d22e5d837be906f0f6f94663d9076cf4\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:runtime:1.0.3] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\runtime-1.0.3.aar\f6aef61f0b90a84bc74064d9cd9a51ab\AndroidManifest.xml:17:1-24:12
 INJECTED from C:\Users\Eva Esteban\AndroidStudioEPS\Application\src\main\AndroidManifest.xml:20:1-55:12
@@ -62,6 +67,16 @@ ADDED from C:\Users\Eva Esteban\AndroidStudioEPS\Application\src\main\AndroidMan
 		ADDED from C:\Users\Eva Esteban\AndroidStudioEPS\Application\src\main\AndroidManifest.xml:39:22-78
 application
 ADDED from C:\Users\Eva Esteban\AndroidStudioEPS\Application\src\main\AndroidManifest.xml:41:5-53:19
+MERGED from [com.google.android.gms:play-services-location:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-location-15.0.1.aar\6ea3112277d4bf6a85952b92afb09ea4\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-location-15.0.1.aar\6ea3112277d4bf6a85952b92afb09ea4\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-base:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\2d8cb3a6cdceadf346d8f0ae8ef049ae\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\2d8cb3a6cdceadf346d8f0ae8ef049ae\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-places-placereport:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-places-placereport-15.0.1.aar\6fd46bc98cf34ec313d908b98f92dcd3\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-places-placereport:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-places-placereport-15.0.1.aar\6fd46bc98cf34ec313d908b98f92dcd3\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-tasks:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-tasks-15.0.1.aar\21afe23313db3f2e41621c38ef1e3a28\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-tasks-15.0.1.aar\21afe23313db3f2e41621c38ef1e3a28\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-basement-15.0.1.aar\e14604cbd5ce95169f948388de92b8c1\AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-basement-15.0.1.aar\e14604cbd5ce95169f948388de92b8c1\AndroidManifest.xml:22:5-26:19
 MERGED from [com.android.volley:volley:1.1.0] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\volley-1.1.0.aar\fbc1b81bf11b440ca42916ed13a15089\AndroidManifest.xml:9:5-20
 MERGED from [com.android.volley:volley:1.1.0] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\volley-1.1.0.aar\fbc1b81bf11b440ca42916ed13a15089\AndroidManifest.xml:9:5-20
 	android:label
@@ -102,6 +117,16 @@ INJECTED from C:\Users\Eva Esteban\AndroidStudioEPS\Application\src\main\Android
 INJECTED from C:\Users\Eva Esteban\AndroidStudioEPS\Application\src\main\AndroidManifest.xml
 MERGED from [com.android.support:support-v13:27.0.2] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\support-v13-27.0.2.aar\f38f06d849713b25745b91cf7c727ad1\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-v13:27.0.2] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\support-v13-27.0.2.aar\f38f06d849713b25745b91cf7c727ad1\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-location:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-location-15.0.1.aar\6ea3112277d4bf6a85952b92afb09ea4\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-location-15.0.1.aar\6ea3112277d4bf6a85952b92afb09ea4\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-base:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\2d8cb3a6cdceadf346d8f0ae8ef049ae\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\2d8cb3a6cdceadf346d8f0ae8ef049ae\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-places-placereport-15.0.1.aar\6fd46bc98cf34ec313d908b98f92dcd3\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-places-placereport-15.0.1.aar\6fd46bc98cf34ec313d908b98f92dcd3\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-tasks:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-tasks-15.0.1.aar\21afe23313db3f2e41621c38ef1e3a28\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-tasks-15.0.1.aar\21afe23313db3f2e41621c38ef1e3a28\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-basement-15.0.1.aar\e14604cbd5ce95169f948388de92b8c1\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-basement-15.0.1.aar\e14604cbd5ce95169f948388de92b8c1\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-v4:27.0.2] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\support-v4-27.0.2.aar\1cd2ebe37bf1cc91bf2556b9a15e04a6\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-v4:27.0.2] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\support-v4-27.0.2.aar\1cd2ebe37bf1cc91bf2556b9a15e04a6\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:cardview-v7:27.0.2] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.0.2.aar\a6be7dda1d0582ca6d2c172f3c426d27\AndroidManifest.xml:20:5-44
@@ -110,8 +135,6 @@ MERGED from [com.android.support:appcompat-v7:27.0.2] C:\Users\Eva Esteban\.grad
 MERGED from [com.android.support:appcompat-v7:27.0.2] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.0.2.aar\49d4e480e69f537968db6bd729394a4d\AndroidManifest.xml:20:5-44
 MERGED from [com.android.volley:volley:1.1.0] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\volley-1.1.0.aar\fbc1b81bf11b440ca42916ed13a15089\AndroidManifest.xml:7:5-43
 MERGED from [com.android.volley:volley:1.1.0] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\volley-1.1.0.aar\fbc1b81bf11b440ca42916ed13a15089\AndroidManifest.xml:7:5-43
-MERGED from [com.android.support:support-media-compat:27.0.2] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.0.2.aar\bfe535873bf74b7a3f81f873f7c06fde\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-media-compat:27.0.2] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.0.2.aar\bfe535873bf74b7a3f81f873f7c06fde\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-fragment:27.0.2] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\support-fragment-27.0.2.aar\e41b75e580987a641ea5cb49bf96a44a\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-fragment:27.0.2] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\support-fragment-27.0.2.aar\e41b75e580987a641ea5cb49bf96a44a\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-core-utils:27.0.2] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.0.2.aar\eea431c6ee172302b0a0be50350e7bfa\AndroidManifest.xml:20:5-44
@@ -122,6 +145,8 @@ MERGED from [com.android.support:support-core-ui:27.0.2] C:\Users\Eva Esteban\.g
 MERGED from [com.android.support:support-core-ui:27.0.2] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.0.2.aar\3d420428666b24e07af2d550acf1169a\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-vector-drawable:27.0.2] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.0.2.aar\d718499b85556eeb6bc87c84ab1a2a70\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-vector-drawable:27.0.2] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.0.2.aar\d718499b85556eeb6bc87c84ab1a2a70\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.0.2] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.0.2.aar\bfe535873bf74b7a3f81f873f7c06fde\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.0.2] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.0.2.aar\bfe535873bf74b7a3f81f873f7c06fde\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-compat:27.0.2] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\support-compat-27.0.2.aar\d22e5d837be906f0f6f94663d9076cf4\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-compat:27.0.2] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\support-compat-27.0.2.aar\d22e5d837be906f0f6f94663d9076cf4\AndroidManifest.xml:20:5-44
 MERGED from [android.arch.lifecycle:runtime:1.0.3] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\runtime-1.0.3.aar\f6aef61f0b90a84bc74064d9cd9a51ab\AndroidManifest.xml:20:5-22:41
@@ -136,3 +161,17 @@ INJECTED from C:\Users\Eva Esteban\AndroidStudioEPS\Application\src\main\Android
 		INJECTED from C:\Users\Eva Esteban\AndroidStudioEPS\Application\src\main\AndroidManifest.xml
 		ADDED from C:\Users\Eva Esteban\AndroidStudioEPS\Application\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Eva Esteban\AndroidStudioEPS\Application\src\main\AndroidManifest.xml
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\2d8cb3a6cdceadf346d8f0ae8ef049ae\AndroidManifest.xml:23:9-26:75
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\2d8cb3a6cdceadf346d8f0ae8ef049ae\AndroidManifest.xml:25:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\2d8cb3a6cdceadf346d8f0ae8ef049ae\AndroidManifest.xml:26:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\2d8cb3a6cdceadf346d8f0ae8ef049ae\AndroidManifest.xml:24:13-79
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-basement-15.0.1.aar\e14604cbd5ce95169f948388de92b8c1\AndroidManifest.xml:23:9-25:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-basement-15.0.1.aar\e14604cbd5ce95169f948388de92b8c1\AndroidManifest.xml:25:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:15.0.1] C:\Users\Eva Esteban\.gradle\caches\transforms-1\files-1.1\play-services-basement-15.0.1.aar\e14604cbd5ce95169f948388de92b8c1\AndroidManifest.xml:24:13-58
