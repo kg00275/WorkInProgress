@@ -45,6 +45,7 @@ import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -222,11 +223,9 @@ public class DeviceControlActivity extends Activity {
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         lastLocation = new String("");
         setLastLocation();
-        String a = lastLocation;
-        int b = 8;
         //WriteUserToDatabase("userNameTest", "nameTest", "passwordTest", "07539106585");
         //currentUserUUID = GetUserFromDatabase("userNameTest", "passwordTest");
-        //WriteFallToDatabase("99", "3", "4");
+        WriteFallToDatabase("99", "3", "4");
     }
 
     @Override
@@ -404,6 +403,7 @@ public class DeviceControlActivity extends Activity {
 
             @Override
                 public void onResponse(JSONObject response) {
+                Toast.makeText(getApplicationContext(), "Fall data saved to online database",Toast.LENGTH_SHORT).show();
             }
 
         }, new Response.ErrorListener() {
