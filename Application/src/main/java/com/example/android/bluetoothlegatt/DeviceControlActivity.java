@@ -103,11 +103,14 @@ public class DeviceControlActivity extends Activity {
     // Location variables
     private FusedLocationProviderClient mFusedLocationClient;
     private String lastLocation;
+    private String lastLatitude;
+    private String lastLongitude;
 
     //Online database variables
     private String currentUserUUID;
 
-
+    // Bluetooth fall data
+    String[] lastFallData = new String[3];
 
     // Code to manage Service lifecycle.
     private final ServiceConnection mServiceConnection = new ServiceConnection() {
@@ -152,7 +155,8 @@ public class DeviceControlActivity extends Activity {
                 // Show all the supported services and characteristics on the user interface.
                 displayGattServices(mBluetoothLeService.getSupportedGattServices());
             } else if (BluetoothLeService.ACTION_DATA_AVAILABLE.equals(action)) {
-                displayData(intent.getStringExtra(BluetoothLeService.EXTRA_DATA));
+                //displayData(intent.getStringExtra(BluetoothLeService.EXTRA_DATA));
+                WriteFallToDatabase(currentUserUUID, lastLatitude, lastLongitude);
             }
         }
     };
@@ -226,6 +230,10 @@ public class DeviceControlActivity extends Activity {
         //WriteUserToDatabase("userNameTest", "nameTest", "passwordTest", "07539106585");
         //currentUserUUID = GetUserFromDatabase("userNameTest", "passwordTest");
         WriteFallToDatabase("99", "3", "4");
+        GetDataForUser("99", "2018-10-01", "2018-11-30");
+
+        lastLongitude = "0";
+        lastLatitude = "0";
     }
 
     @Override
@@ -290,7 +298,11 @@ public class DeviceControlActivity extends Activity {
     }
 
     private void displayData(String data) {
+
         if (data != null) {
+            //if(lastFallData.length == 0)
+            //
+            // lastFallData[0] = data;
             mDataField.setText(data);
         }
     }
@@ -548,6 +560,69 @@ public class DeviceControlActivity extends Activity {
     }
 
     /**
+     * Function to get all the data for a particular user between the specified dates
+     * @param uuid the uuid of the user
+     * @param startDate the start date
+     * @param endDate the end date
+     * @return
+     */
+    private String GetDataForUser(String uuid, String startDate, String endDate) {
+
+        final String[] uuidString = {""};
+        // Create the JSON Object and the request queue to add it to
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JSONObject jsonBodyObj = new JSONObject();
+        // Specify URL to send the request to
+        String url = "http://81.109.61.10/manage";
+        try{
+            jsonBodyObj.put("action", "get_fall");
+            jsonBodyObj.put("uuid", uuid);
+            jsonBodyObj.put("start_date", startDate);
+            jsonBodyObj.put("end_date", endDate);
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+
+        final String requestBody = jsonBodyObj.toString();
+
+        // Send POST request to the script
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
+                url, null, new Response.Listener<JSONObject>(){
+
+            @Override
+            public void onResponse(JSONObject response){
+                // What to do with response
+                //uuidString[0] = response.optString("uuid");
+                Log.i("Response",String.valueOf(response));
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.e("Error: ", error.getMessage());
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json");
+                return headers;
+            }
+
+
+            @Override    public byte[] getBody() {
+                byte[] bytes = requestBody.getBytes();
+                return bytes;
+            }
+        };
+
+        // Add request to the queue
+        requestQueue.add(jsonObjectRequest);
+        return uuidString[0];
+    }
+
+
+    /**
      * Function to send an SMS message with the provided content to the specified number
      *
      * @param phoneNumber the number to send the SMS message to
@@ -602,8 +677,10 @@ public class DeviceControlActivity extends Activity {
                         public void onSuccess(Location location) {
                             // Got last known location. In some rare situations this can be null.
                             if (location != null) {
-                                lastLocation = Double.toString(location.getLatitude()) + "," + Double.toString(location.getLongitude()) ;
-                                String b = lastLocation;
+                                lastLatitude = Double.toString(location.getLatitude());
+                                lastLongitude = Double.toString(location.getLongitude());
+                                //lastLocation = Double.toString(location.getLatitude()) + "," + Double.toString(location.getLongitude()) ;
+                                //String b = lastLocation;
                                 // Get into right format
                                 // Logic to handle location object
                             }

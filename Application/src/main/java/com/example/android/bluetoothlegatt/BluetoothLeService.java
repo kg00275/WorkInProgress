@@ -33,6 +33,8 @@ import android.os.IBinder;
 import android.util.Log;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.UUID;
 
 /**
@@ -66,6 +68,8 @@ public class BluetoothLeService extends Service {
     public final static UUID UUID_HEART_RATE_MEASUREMENT =
             UUID.fromString(SampleGattAttributes.HEART_RATE_MEASUREMENT);
 
+    public int counter = 0;
+
     // Implements callback methods for GATT events that the app cares about.  For example,
     // connection change and services discovered.
     private final BluetoothGattCallback mGattCallback = new BluetoothGattCallback() {
@@ -93,6 +97,17 @@ public class BluetoothLeService extends Service {
         public void onServicesDiscovered(BluetoothGatt gatt, int status) {
             if (status == BluetoothGatt.GATT_SUCCESS) {
                 broadcastUpdate(ACTION_GATT_SERVICES_DISCOVERED);
+               for (BluetoothGattService currentService : getSupportedGattServices()) {
+                    for (BluetoothGattCharacteristic currentCharacteristic : currentService.getCharacteristics()) {
+                       // String currentCharacteristicUuid = currentCharacteristic.getUuid();
+                        if (currentCharacteristic.getUuid() != null && currentCharacteristic.getUuid().equals(UUID_HEART_RATE_MEASUREMENT)) {
+                            //mSerialCharacteristic = currentCharacteristic;
+                            setCharacteristicNotification(currentCharacteristic, true);
+                            readCharacteristic(currentCharacteristic);
+                        }
+                    }
+                }
+
             } else {
                 Log.w(TAG, "onServicesDiscovered received: " + status);
             }
@@ -315,5 +330,62 @@ public class BluetoothLeService extends Service {
         if (mBluetoothGatt == null) return null;
 
         return mBluetoothGatt.getServices();
+    }
+
+    // Background work
+
+    @Override
+    public void onTaskRemoved(Intent rootIntent){
+
+      /*  Intent restartServiceIntent = new Intent(getApplicationContext(), this.getClass());
+        restartServiceIntent.setPackage(getPackageName());
+
+        PendingIntent restartServicePendingIntent = PendingIntent.getService(getApplicationContext(), 1, restartServiceIntent, PendingIntent.FLAG_ONE_SHOT);
+        AlarmManager alarmService = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+        alarmService.set(
+                AlarmManager.ELAPSED_REALTIME,
+                SystemClock.elapsedRealtime() + 1000,
+                restartServicePendingIntent);*/
+
+        super.onTaskRemoved(rootIntent);
+        Intent broadcastIntent = new Intent(this, RestartBroadcast.class);
+        this.sendBroadcast(broadcastIntent);
+    }
+
+    private Timer timer;
+    private TimerTask timerTask;
+    long oldTime=0;
+
+    public void startTimer() {
+        //set a new Timer
+        timer = new Timer();
+
+        //initialize the TimerTask's job
+        initializeTimerTask();
+
+        //schedule the timer, to wake up every 1 second
+        timer.schedule(timerTask, 1000, 1000); //
+    }
+
+    /**
+     * it sets the timer to print the counter every x seconds
+     */
+    public void initializeTimerTask() {
+        timerTask = new TimerTask() {
+            public void run() {
+                Log.i("in timer", "in timer ++++  "+ (counter++));
+            }
+        };
+    }
+
+    /**
+     * not needed
+     */
+    public void stoptimertask() {
+        //stop the timer, if it's not already null
+        if (timer != null) {
+            timer.cancel();
+            timer = null;
+        }
     }
 }
