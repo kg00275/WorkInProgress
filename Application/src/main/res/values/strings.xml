@@ -33,4 +33,13 @@
     <string name="menu_disconnect">Disconnect</string>
     <string name="menu_scan">Scan</string>
     <string name="menu_stop">Stop</string>
+
+    <string name="hint_user">User…</string>
+    <string name="button_save">Save</string>
+    <string name="empty_not_saved">User not saved because it is empty.</string>
+
+    <string name="no_user">No User</string>
+    <string name="title_activity_main">EPS Project</string>
+
+    <string name="clear_all_data">Clear all data</string>
 </resources>

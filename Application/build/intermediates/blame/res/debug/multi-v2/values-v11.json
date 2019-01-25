@@ -1,16 +1,16 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Eva Esteban\\AndroidStudioEPS\\Application\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v11\\values-v11.xml",
+            "outputFile": "C:\\Users\\kyle\\AndroidStudioProjects\\EPS - Copy\\Application\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v11\\values-v11.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Eva Esteban\\AndroidStudioEPS\\Application\\src\\main\\res\\values-v11\\template-styles.xml",
+                    "source": "C:\\Users\\kyle\\AndroidStudioProjects\\EPS - Copy\\Application\\src\\main\\res\\values-v11\\template-styles.xml",
                     "from": {
                         "startLines": "19",
                         "startColumns": "4",
-                        "startOffsets": "650",
+                        "startOffsets": "669",
                         "endColumns": "65",
-                        "endOffsets": "711"
+                        "endOffsets": "730"
                     },
                     "to": {
                         "startLines": "192",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Eva Esteban\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\49d4e480e69f537968db6bd729394a4d\\res\\values-v11\\values-v11.xml",
+                    "source": "C:\\Users\\kyle\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\39a9ee4e000cd89e0ac2306e60457f1e\\res\\values-v11\\values-v11.xml",
                     "from": {
                         "startLines": "2,8,14,20,26,32,38,39,43,47,48,52,56,57,61,66,71,76,78,80,81,82,136,191",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

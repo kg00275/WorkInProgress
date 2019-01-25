@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorAccent">#FFFF9800</color>
+    <color name="colorBluetooth">#1976D2</color>
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryDark">#1976D2</color>
+    <color name="colorPrimaryLight">#64b5f6</color>
+    <color name="colorScreenBackground">#fff3e0</color>
+    <color name="colorTextHint">#E0E0E0</color>
+    <color name="colorTextPrimary">@android:color/white</color>
     <color name="notification_action_color_filter">@color/secondary_text_default_material_light</color>
     <dimen name="notification_content_margin_start">0dp</dimen>
     <dimen name="notification_main_column_padding_top">0dp</dimen>
@@ -162,6 +170,9 @@
     <style name="Base.V21.ThemeOverlay.AppCompat.Dialog" parent="Base.V11.ThemeOverlay.AppCompat.Dialog">
         <item name="android:windowElevation">@dimen/abc_floating_window_z</item>
     </style>
+    <style name="Base.V21.Widget.Design.AppBarLayout" parent="Base.V14.Widget.Design.AppBarLayout">
+        <item name="android:stateListAnimator">@animator/design_appbar_state_list_animator</item>
+    </style>
     <style name="Base.Widget.AppCompat.ActionBar.TabText" parent="android:Widget.Material.ActionBar.TabText">
     </style>
     <style name="Base.Widget.AppCompat.ActionBar.TabView" parent="android:Widget.Material.ActionBar.TabView">
@@ -223,6 +234,7 @@
     <style name="Base.Widget.AppCompat.TextView.SpinnerItem" parent="android:Widget.Material.TextView.SpinnerItem"/>
     <style name="Base.Widget.AppCompat.Toolbar.Button.Navigation" parent="android:Widget.Material.Toolbar.Button.Navigation">
     </style>
+    <style name="Base.Widget.Design.AppBarLayout" parent="Base.V21.Widget.Design.AppBarLayout"/>
     <style name="Platform.AppCompat" parent="Platform.V21.AppCompat"/>
     <style name="Platform.AppCompat.Light" parent="Platform.V21.AppCompat.Light"/>
     <style name="Platform.ThemeOverlay.AppCompat" parent="">
