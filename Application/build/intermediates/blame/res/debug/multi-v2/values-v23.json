@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Eva Esteban\\AndroidStudioEPS\\Application\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v23\\values-v23.xml",
+            "outputFile": "C:\\Users\\kyle\\AndroidStudioProjects\\EPS - Copy\\Application\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v23\\values-v23.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Eva Esteban\\.gradle\\caches\\transforms-1\\files-1.1\\cardview-v7-27.0.2.aar\\a6be7dda1d0582ca6d2c172f3c426d27\\res\\values-v23\\values-v23.xml",
+                    "source": "C:\\Users\\kyle\\.gradle\\caches\\transforms-1\\files-1.1\\cardview-v7-27.0.2.aar\\9271a34b692db978b0bb1bf9db59a622\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Eva Esteban\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\49d4e480e69f537968db6bd729394a4d\\res\\values-v23\\values-v23.xml",
+                    "source": "C:\\Users\\kyle\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\39a9ee4e000cd89e0ac2306e60457f1e\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,19,32,33,34,35,36",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
