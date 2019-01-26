@@ -47,6 +47,7 @@
         android:debuggable="true"
         android:icon="@mipmap/heal_logo"
         android:label="@string/title_activity_main"
+        android:testOnly="true"
         android:theme="@android:style/Theme.Holo.Light" >
         <activity
             android:name="com.example.android.bluetoothlegatt.DeviceScanActivity"
